@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<groupId>org.dante.springai</groupId>
+	<artifactId>spring-ai-parent</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+	
+	<name>spring-ai-parent</name>
+	<description>Dante Spring AI Parent</description>
+	
+	<modules>
+        <module>spring-ai-common</module>
+		<module>spring-ai-ollama</module>
+    </modules>
+	
+	<properties>
+		<java.version>21</java.version>
+		<maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<springboot.version>3.4.7</springboot.version>
+		<spring-ai.version>1.0.0</spring-ai.version>
+	</properties>
+	
+	<dependencyManagement>
+        <dependencies>
+        
+        	<!-- SpringBoot的依赖配置-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${springboot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            
+            <!-- Spring AI 依赖配置 -->
+        	<dependency>
+            	<groupId>org.springframework.ai</groupId>
+            	<artifactId>spring-ai-bom</artifactId>
+            	<version>${spring-ai.version}</version>
+            	<type>pom</type>
+            	<scope>import</scope>
+        	</dependency>
+        	
+        	<!-- Lombok 依赖 -->
+        	<dependency>
+      			<groupId>org.projectlombok</groupId>
+      			<artifactId>lombok</artifactId>
+      			<version>1.18.38</version>
+    		</dependency>
+    		
+        </dependencies>
+    </dependencyManagement>
+	
+	<build>
+    	<plugins>
+      		<plugin>
+        		<groupId>org.apache.maven.plugins</groupId>
+        		<artifactId>maven-compiler-plugin</artifactId>
+        		<version>3.14.0</version>
+        		<configuration>
+        		    <source>${java.version}</source>
+            		<target>${java.version}</target>
+         			<annotationProcessorPaths>
+            			<path>
+              				<groupId>org.projectlombok</groupId>
+              				<artifactId>lombok</artifactId>
+            			</path>
+          			</annotationProcessorPaths>
+        		</configuration>
+      		</plugin>
+      		<plugin>
+        		<groupId>org.springframework.boot</groupId>
+        		<artifactId>spring-boot-maven-plugin</artifactId>
+        		<configuration>
+          			<excludes>
+            			<exclude>
+              				<groupId>org.projectlombok</groupId>
+              				<artifactId>lombok</artifactId>
+            			</exclude>
+          			</excludes>
+        		</configuration>
+      		</plugin>
+    	</plugins>
+  </build>
+
+</project>
