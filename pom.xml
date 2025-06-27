@@ -14,15 +14,15 @@
 	<modules>
         <module>spring-ai-common</module>
 		<module>spring-ai-ollama</module>
+		<module>spring-ai-mcp/weather-mcp-server</module>
     </modules>
 	
 	<properties>
 		<java.version>21</java.version>
-		<maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<springboot.version>3.4.7</springboot.version>
 		<spring-ai.version>1.0.0</spring-ai.version>
+		<hutool.version>5.8.38</hutool.version>
 	</properties>
 	
 	<dependencyManagement>
@@ -52,40 +52,43 @@
       			<artifactId>lombok</artifactId>
       			<version>1.18.38</version>
     		</dependency>
+
+			<!-- HuTool 依赖 -->
+			<dependency>
+				<groupId>cn.hutool</groupId>
+				<artifactId>hutool-all</artifactId>
+				<version>${hutool.version}</version>
+			</dependency>
     		
         </dependencies>
     </dependencyManagement>
-	
-	<build>
-    	<plugins>
-      		<plugin>
-        		<groupId>org.apache.maven.plugins</groupId>
-        		<artifactId>maven-compiler-plugin</artifactId>
-        		<version>3.14.0</version>
-        		<configuration>
-        		    <source>${java.version}</source>
-            		<target>${java.version}</target>
-         			<annotationProcessorPaths>
-            			<path>
-              				<groupId>org.projectlombok</groupId>
-              				<artifactId>lombok</artifactId>
-            			</path>
-          			</annotationProcessorPaths>
-        		</configuration>
-      		</plugin>
-      		<plugin>
-        		<groupId>org.springframework.boot</groupId>
-        		<artifactId>spring-boot-maven-plugin</artifactId>
-        		<configuration>
-          			<excludes>
-            			<exclude>
-              				<groupId>org.projectlombok</groupId>
-              				<artifactId>lombok</artifactId>
-            			</exclude>
-          			</excludes>
-        		</configuration>
-      		</plugin>
-    	</plugins>
-  </build>
 
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+					<version>${springboot.version}</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>repackage</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.14.0</version>
+					<configuration>
+						<source>${java.version}</source>
+						<target>${java.version}</target>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 </project>
