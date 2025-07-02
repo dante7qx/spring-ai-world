@@ -56,7 +56,6 @@ async function markWeatherRequest<T>(url: string): Promise<T | null> {
 // })
 
 
-
 // 注册 weather mcp server tools
 server.tool(
     'lookUpCity',
@@ -75,6 +74,11 @@ server.tool(
     }
 )
 
+/**
+ * 主函数，启动天气MCP服务器。
+ * 
+ * @returns 无返回值。
+ */
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);

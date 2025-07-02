@@ -1,6 +1,8 @@
+server:
+  port: 8100
 spring:
   application:
-    name: spring-ai-ollama
+    name: spring-ai-rag
   http:
     client:
       factory: jdk  # 必须显式设置，否则默认 reactor，会影响特定的 AI workflows, 例如: ImageModel
@@ -13,6 +15,8 @@ spring:
         options:
           model: llama3.2:3b # phi3:mini、llama3.2-vision:11b
           temperature: 0.7
+      embedding:
+        model: nomic-embed-text:v1.5
 logging:
   level:
     org.springframework.ai.chat.client.advisor: debug
