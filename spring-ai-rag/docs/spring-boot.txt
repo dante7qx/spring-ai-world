@@ -1,0 +1,137 @@
+Spring Boot 项目简介
+
+Spring Boot 是基于 Spring Framework 的开源 Java 框架，旨在简化 Spring 应用程序的创建和开发过程。它采用"约定优于配置"的理念，让开发者能够快速构建独立的、生产级别的 Spring 应用程序。
+
+主要用途：
+
+1. 快速应用开发
+   - 提供快速启动模板和脚手架
+   - 减少样板代码和配置文件
+   - 内置嵌入式服务器（Tomcat、Jetty、Undertow）
+   - 支持独立运行的 JAR 包部署
+
+2. 微服务架构
+   - 轻量级的微服务解决方案
+   - 内置服务发现和配置管理
+   - 支持 Spring Cloud 生态系统
+   - 容器化部署友好
+
+3. 企业级应用开发
+   - 内置安全框架集成
+   - 数据库连接和事务管理
+   - 缓存和消息队列支持
+   - 监控和健康检查功能
+
+核心特性：
+
+1. 自动配置（Auto Configuration）
+   - 基于类路径自动配置 Spring 应用
+   - 智能的默认配置
+   - 条件化配置注解
+   - 可通过属性文件覆盖默认配置
+
+2. 起步依赖（Starter Dependencies）
+   - spring-boot-starter-web：Web 应用开发
+   - spring-boot-starter-data-jpa：JPA 数据访问
+   - spring-boot-starter-security：安全框架
+   - spring-boot-starter-test：测试框架
+   - 一站式依赖管理，避免版本冲突
+
+3. 嵌入式服务器
+   - 内置 Tomcat、Jetty、Undertow
+   - 无需外部容器部署
+   - 支持 HTTPS 和 HTTP/2
+   - 可配置端口、SSL 等参数
+
+4. 生产就绪功能
+   - Spring Boot Actuator：监控和管理端点
+   - 健康检查和指标收集
+   - 应用信息和环境信息暴露
+   - JMX 和 HTTP 端点支持
+
+5. 外部化配置
+   - 支持 properties、YAML 格式
+   - 多环境配置文件
+   - 命令行参数和环境变量
+   - 配置文件优先级管理
+
+6. Spring Boot CLI
+   - 命令行工具支持
+   - Groovy 脚本快速原型
+   - 依赖管理和运行支持
+
+技术优势：
+
+1. 开发效率
+   - 零配置启动
+   - 热部署支持（DevTools）
+   - 内置开发工具
+   - 快速原型开发
+
+2. 运维友好
+   - 独立部署包
+   - 容器化支持
+   - 云平台兼容
+   - 监控和日志集成
+
+3. 生态丰富
+   - Spring 全家桶支持
+   - 第三方库广泛集成
+   - 社区活跃
+   - 文档完善
+
+常用注解：
+
+@SpringBootApplication - 主启动类注解
+@RestController - REST 控制器
+@Service - 服务层组件
+@Repository - 数据访问层组件
+@Configuration - 配置类
+@Value - 属性注入
+@Autowired - 依赖注入
+@Profile - 环境配置
+
+配置文件示例：
+
+# application.properties
+server.port=8080
+spring.datasource.url=jdbc:mysql://localhost:3306/mydb
+spring.datasource.username=root
+spring.datasource.password=password
+spring.jpa.hibernate.ddl-auto=update
+logging.level.com.example=DEBUG
+
+# application.yml
+server:
+  port: 8080
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/mydb
+    username: root
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+logging:
+  level:
+    com.example: DEBUG
+
+应用场景：
+
+1. Web 应用开发 - REST API、MVC 应用
+2. 微服务架构 - 分布式系统构建
+3. 企业级应用 - ERP、CRM 系统
+4. 数据处理应用 - 批处理、流处理
+5. 云原生应用 - 容器化部署
+
+最佳实践：
+
+1. 使用 Spring Boot Starter 简化依赖管理
+2. 遵循约定优于配置原则
+3. 利用 Actuator 进行应用监控
+4. 使用 Profile 管理多环境配置
+5. 编写集成测试确保应用质量
+6. 合理使用缓存和连接池
+7. 遵循 RESTful API 设计规范
+
+Spring Boot 显著降低了 Spring 应用的开发门槛，提高了开发效率，是现代 Java 企业级应用开发的首选框架。

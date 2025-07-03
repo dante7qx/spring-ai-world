@@ -1,0 +1,15 @@
+spring:
+  ai:
+    model:
+      chat: ollama
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        options:
+          model: llama3.2:3b # phi3:mini、llama3.2-vision:11b、qwen3:4b
+          temperature: 0.7
+      embedding:
+        model: nomic-embed-text:v1.5
+logging:
+  level:
+    org.springframework.ai.chat.client.advisor: debug
